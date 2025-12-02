@@ -1,11 +1,15 @@
-export default function CardContainer({ cards }) {
+import Card from "./Card"
+
+export default function CardContainer({ cards, handleCardClick }) {
     return (
-        <div>
+        <div className="card-container">
             {cards.map((pokemon) => (
-                <div key={pokemon.name}>
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                    <p>{pokemon.name}</p>
-                </div>
+                <Card 
+                    key={pokemon.id}
+                    name={pokemon.name}
+                    image={pokemon.sprites.front_default}
+                    onClick={() => handleCardClick(pokemon.id)}
+                />
             ))}
         </div>
     )
